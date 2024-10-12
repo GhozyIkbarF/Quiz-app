@@ -77,11 +77,13 @@ export const useQuiz = () => {
   }, []);
 
   useEffect(() => {
-    const historyPayload = {
-      result,
-      resume,
-    };
-    storage.setItem("history", historyPayload);
+    if(result.totalQuestions !== 0){
+      const historyPayload = {
+        result,
+        resume,
+      };
+      storage.setItem("history", historyPayload);
+    }
   }, [result, resume]);
 
   const handleStart = () => {
