@@ -55,7 +55,6 @@ const Login: React.FC = () => {
       login();
       navigate("/");
     } else {
-      // alert("Invalid email or password");
       toast({
         title: "Invalid email or password",
         description: "Please try again",

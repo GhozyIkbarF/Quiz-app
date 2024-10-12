@@ -6,7 +6,6 @@ import React, {
   ReactNode,
 } from "react";
 import { storage } from "@/lib/utils";
-import { set } from "react-hook-form";
 
 interface AuthContextProps {
   isAuthenticated: boolean;
