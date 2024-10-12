@@ -1,0 +1,94 @@
+import React from "react";
+import { Button } from "@/components/ui/button";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
+import { useQuiz } from "@/hooks/useQuiz";
+import Timer from "@/components/Timer";
+import QuestionCard from "@/components/QuestionCard";
+import QuizResume from "@/components/QuizResume";
+import { useAuth } from "@/context/AuthContext";
+
+const Quiz: React.FC = () => {
+  const { logout } = useAuth();
+  const {
+    confirmationPrompt,
+    currentQuestionIndex,
+    handleAnswer,
+    handleStart,
+    isfinish,
+    handleFinish,
+    questions,
+    result,
+    handleOnChangeTime,
+    unFinishQuiz,
+    resume,
+  } = useQuiz();
+
+
+  if (!isfinish) {
+    return (
+      <div className="min-h-screen grid place-items-center">
+        {questions.length === 0 ? (
+          <h3 className="text-xl font-bold">Loading...</h3>
+        ) : (
+          <div className="max-w-[550px] w-full space-y-10 text-center">
+            <h1 className="text-4xl font-black">Quizzz</h1>
+            <Timer 
+              time={!unFinishQuiz ? 60000 : unFinishQuiz} 
+              onTimeUp={handleFinish} 
+              onChange={handleOnChangeTime}
+            />
+            <QuestionCard
+              question={questions}
+              currentQuestionIndex={currentQuestionIndex}
+              onSelect={(answer) => handleAnswer(answer)}
+            />
+          </div>
+        )}
+      </div>
+    );
+  }
+
+
+  return (
+    <div className="relative flex justify-center pt-32">
+      <Button onClick={() => logout()} className="absolute top-2 right-2">
+        Logout
+      </Button>
+      {confirmationPrompt ? (
+        <div className="flex flex-col items-center gap-5">
+          <h1 className="font-bold text-center text-2xl md:text-4xl">
+            {!unFinishQuiz ? 'you sure you want to start the quiz?' : 'You have an unfinished quiz, do you want to continue?'}
+          </h1>
+          <div className="space-x-3">
+            {unFinishQuiz && <Button onClick={() => handleFinish()}>Cancel</Button>}
+            <Button onClick={() => handleStart()}>{unFinishQuiz ? 'Continue' : 'Start'}</Button>
+          </div>
+        </div>
+      ) : (
+        <div className="max-w-[500px] flex flex-col mb-10">
+          <h1 className="font-bold text-center text-2xl md:text-4xl mb-5">
+            Your result
+          </h1>
+          <div className="grid grid-cols-3 gap-5 mb-8">
+            {Object.entries(result).map(([key, value]) => (
+              <Card key={key} className="text-center font-bold">
+                <CardHeader>
+                  <h3 className="text-center">{key}</h3>
+                </CardHeader>
+                <CardContent>
+                  <h1 className="text-2xl md:first:text-4xl">{value}</h1>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+          <QuizResume resume={resume} />
+          <Button className="max-w-min" onClick={() => handleStart()}>
+            Try Again
+          </Button>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default Quiz;
