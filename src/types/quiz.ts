@@ -1,23 +1,21 @@
 type QuestionType = {
-    category: string;
-    type: string;
-    difficulty: string;
     question: string;
     correct_answer: string;
     incorrect_answers: string[];
+    answer: string;
+    isCorrect: boolean | undefined
 };
 
 type QuizResumeType = {
     question: string;
-    answer: string;
     correctAnswer: string;
-    isCorrect: boolean;
 };
 
 type QuizResultType = {
     correct: number;
     incorrect: number;
-    total: number;
+    totalAnswered: number;
+    totalQuestions: number;
 };
 
 export  { QuestionType, QuizResumeType, QuizResultType };

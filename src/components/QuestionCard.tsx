@@ -13,7 +13,7 @@ const QuestionCard = ({question, currentQuestionIndex, onSelect}: QuestionCardPr
   const currectQuestion:QuestionType = question[currentQuestionIndex]
   return (
     <Fragment>
-      <Card className='relative bg-white text-center text-2xl p-5 pt-8 lg:p-10'>
+      <Card className='relative bg-white text-center text-xl p-5 pt-8 lg:p-10'>
         <p className='text-sm font-semibold absolute top-1 right-1'>
           {currentQuestionIndex + 1}/{question.length}
         </p>

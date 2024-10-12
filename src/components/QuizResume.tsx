@@ -7,10 +7,10 @@ import {
   } from "@/components/ui/accordion";
   import { Card, CardContent, CardHeader } from "@/components/ui/card";
   import { Badge } from './ui/badge';
-  import { QuizResumeType } from "@/types/quiz"
+  import { QuestionType } from "@/types/quiz"
 
   interface QuizResumeProps {
-    resume: QuizResumeType[];
+    resume: QuestionType[];
   }
   
   const QuizResume: React.FC<QuizResumeProps> = ({ resume }) => {
@@ -33,10 +33,10 @@ import {
                 Your answer: <span>{item.answer}</span>
               </p>
               <p>
-                Correct answer: <span>{item.correctAnswer}</span>
+                Correct answer: <span>{item.correct_answer}</span>
               </p>
               <Badge className='bg-bg mt-5'>
-                {item.isCorrect ? "Correct" : "Incorrect"}
+                {item.isCorrect === true ? "Correct" : item.isCorrect === false ? "Incorrect" : "Not answered"}
               </Badge>
             </CardContent>
           </Card>
