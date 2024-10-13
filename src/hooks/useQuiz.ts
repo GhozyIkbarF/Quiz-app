@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { QuizResumeType, QuizResultType, QuestionType } from "@/types/quiz";
+import {  QuizResultType, QuestionType } from "@/types/quiz";
 import { decodeHtmlEntities, storage } from "@/lib/utils";
 import { useToast } from "./use-toast";
 import { useAuth } from "@/context/AuthContext";

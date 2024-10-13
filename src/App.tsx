@@ -4,6 +4,7 @@ import Quiz from '@/pages/quiz';
 import ProtectedRoute from '@/components/ProtectedRoute';
 import { AuthProvider } from '@/context/AuthContext';
 import { Toaster } from "@/components/ui/toaster"
+import ScrollToTopButton from './components/ScrollToTopButton';
 
 type RouteType = {
   path: string;
@@ -46,6 +47,7 @@ function App() {
           ))}
         </Routes>
       </Router>
+      <ScrollToTopButton />
     </AuthProvider>
   );
 }

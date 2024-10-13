@@ -45,7 +45,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   }
 
   return (
-    <div className="bg-bg min-h-screen p-5">
+    <div className="relative bg-bg min-h-screen p-5">
       <AuthContextValue.Provider value={value}>
         {children}
       </AuthContextValue.Provider>
