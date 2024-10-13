@@ -6,11 +6,6 @@ type QuestionType = {
     isCorrect: boolean | undefined
 };
 
-type QuizResumeType = {
-    question: string;
-    correctAnswer: string;
-};
-
 type QuizResultType = {
     correct: number;
     incorrect: number;
@@ -18,4 +13,4 @@ type QuizResultType = {
     totalQuestions: number;
 };
 
-export  { QuestionType, QuizResumeType, QuizResultType };
+export  { QuestionType, QuizResultType };

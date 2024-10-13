@@ -24,13 +24,13 @@ export default {
   			base: '10px'
   		},
   		boxShadow: {
-  			light: '0px 4px 0px 0px #000',
-  			dark: '0px 4px 0px 0px #000'
-  		},
+			light: '4px 4px 0px 0px #000',
+			dark: '4px 4px 0px 0px #000',
+		  },
   		translate: {
-  			boxShadowX: '0px',
+  			boxShadowX: '4px',
   			boxShadowY: '4px',
-  			reverseBoxShadowX: '0px',
+  			reverseBoxShadowX: '-4px',
   			reverseBoxShadowY: '-4px'
   		},
   		fontWeight: {

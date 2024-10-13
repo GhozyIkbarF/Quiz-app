@@ -59,8 +59,8 @@ const Quiz: React.FC = () => {
             {!unFinishQuiz ? 'you sure you want to start the quiz?' : 'You have an unfinished quiz, do you want to continue?'}
           </h1>
           <div className="space-x-3">
-            {unFinishQuiz && <Button onClick={() => handleFinish()}>Cancel</Button>}
-            <Button onClick={() => handleStart()}>{unFinishQuiz ? 'Continue' : 'Start'}</Button>
+            {unFinishQuiz && <Button onClick={() => handleFinish()}>No</Button>}
+            <Button onClick={() => handleStart()}>{unFinishQuiz ? 'Yes' : 'Start'}</Button>
           </div>
         </div>
       ) : (
