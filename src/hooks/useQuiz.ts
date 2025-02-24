@@ -86,7 +86,7 @@ export const useQuiz = () => {
     }
   }, [result, resume]);
 
-  const handleStart = () => {
+  const handleStart = (): void => {
     setIsStarted(true);
     setIsFinish(false);
     if (!unFinishQuiz) {
@@ -100,7 +100,7 @@ export const useQuiz = () => {
     }
   };
 
-  const handleFinish = () => {
+  const handleFinish = (): void => {
     setIsStarted(false);
     setIsFinish(true);
     setCurrentQuestionIndex(0);
@@ -110,7 +110,7 @@ export const useQuiz = () => {
     storage.removeItem("unFinish");
   };
 
-  const handleAnswer = (answer: string) => {
+  const handleAnswer = (answer: string): void => {
     const current = questions[currentQuestionIndex];
     const isCorrect = current.correct_answer === answer;
     setResume((prev) => [
@@ -136,7 +136,7 @@ export const useQuiz = () => {
     }
   };
 
-  const handleOnChangeTime = (currentTime: number) => {
+  const handleOnChangeTime = (currentTime: number): void => {
     const payload = {
       currentIndex: currentQuestionIndex,
       currentResume: resume,
@@ -144,10 +144,9 @@ export const useQuiz = () => {
       currentTime,
     };
     storage.setItem("unFinish", payload);
-    return;
   };
 
-  const handleLogout = () => {
+  const handleLogout = (): void => {
     logout();
     storage.removeItem("history");
   };

@@ -24,7 +24,7 @@ const loginSchema = z.object({
   password: z
     .string()
     .min(6, { message: "Password must be at least 6 characters" }),
-});
+  })
 
 const inputList: Array<{
   label: string;
@@ -37,8 +37,8 @@ const inputList: Array<{
 
 const Login: React.FC = () => {
   const { login, isAuthenticated } = useAuth();
-  const navigate = useNavigate();
   const { toast } = useToast();
+  const navigate = useNavigate();
   const defaultValues = inputList.reduce((acc, input) => {
     acc[input.name] = "";
     return acc;
@@ -50,18 +50,19 @@ const Login: React.FC = () => {
   });
 
   const onSubmit = (values: z.infer<typeof loginSchema>) => {
-    if (values.email === "email@gmail.com" && values.password === "123456") {
-      storage.setItem("token", "soijoerjoeigjojgojgodijfi");
-      login();
-      navigate("/");
-    } else {
-      toast({
-        title: "Invalid email or password",
-        description: "Please try again",
-        variant: "default",
+    login();
+    storage.setItem("token", "soijoerjoeigjojgojgodijfi");
+    navigate("/");
+    // if (values.email === "email@gmail.com" && values.password === "123456") {
+    //   navigate("/");
+    // } else {
+    //   toast({
+    //     title: "Invalid email or password",
+    //     description: "Please try again",
+    //     variant: "default",
         
-      });
-    }
+    //   });
+    // }
   };
 
   useEffect(() => {
@@ -104,6 +105,12 @@ const Login: React.FC = () => {
           </Form>
         </CardContent>
       </Card>
+
+      <div>
+        <p className="text-center mt-4">
+          Email and password is up to you
+        </p>
+      </div>
     </div>
   );
 };
